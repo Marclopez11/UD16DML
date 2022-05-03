@@ -1,0 +1,21 @@
+#4.1 
+SELECT nombre FROM peliculas
+#4.2 
+SELECT CALIFICACIONEDAD FROM peliculas WHERE CALIFICACIONEDAD IS NOT NULL
+#4.3 
+SELECT * FROM peliculas WHERE CALIFICACIONEDAD IS  NULL
+#4.4 
+SELECT * FROM salas WHERE PELICULA IS NULL
+#4.5 
+SELECT * FROM salas INNER JOIN peliculas as p on p.CODIGO = salas.PELICULA AND p.CALIFICACIONEDAD IS NOT NULL
+#4.6 SELECT  * FROM peliculas INNER JOIN salas as s on peliculas.CODIGO = s.PELICULA
+#4.7 SELECT p.NOMBRE FROM peliculas as p LEFT JOIN salas as s on p.CODIGO = s.PELICULA WHERE s.PELICULA IS NULL
+#4.8 INSERT INTO peliculas (CODIGO,NOMBRE,CALIFICACIONEDAD) VALUES (10,'Uno,Dos,Tres',13)
+#4.9 UPDATE peliculas
+SET CALIFICACIONEDAD  = "no reco para menores de 13" WHERE CALIFICACIONEDAD is null  
+
+#4.10 No entiendo la bd  salen letras en calificaciones
+
+
+
+
