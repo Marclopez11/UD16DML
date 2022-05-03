@@ -1,0 +1,40 @@
+
+#3.1 
+SELECT * FROM almacenes
+#3.2
+ SELECT * FROM cajas WHERE valor > 150
+#3.3 
+SELECT CONTENIDO FROM 	cajas
+#3.4 
+SELECT AVG(valor) AS Preciomedioporcaja FROM cajas ;
+#3.5 
+SELECT AVG(valor) FROM cajas INNER JOIN almacenes as a  WHERE cajas.ALMACEN = a.CODIGO GROUP BY cajas.ALMACEN
+#3.6
+ SELECT a.CODIGO FROM cajas INNER JOIN almacenes as a  WHERE cajas.ALMACEN = a.CODIGO  GROUP BY cajas.ALMACEN HAVING AVG(valor) > 150
+#3.7 
+SELECT c.NUMREFERENCIA, d.LUGAR FROM cajas as c INNER JOIN almacenes as d ON c.ALMACEN = d.CODIGO
+#3.8 
+SELECT COUNT(ALMACEN) as SUMADECAJAS FROM cajas GROUP BY cajas.ALMACEN
+#3.9
+SELECT a.CODIGO FROM almacenes as a INNER JOIN cajas as c ON a.CODIGO = c.ALMACEN WHERE a.CAPACIDAD<(SELECT COUNT(cajas.ALMACEN) FROM cajas) GROUP BY c.ALMACEN
+
+
+#3.10 
+SELECT cajas.NUMREFERENCIA FROM cajas INNER JOIN almacenes AS a ON a.CODIGO = cajas.ALMACEN WHERE a.LUGAR LIKE "Bilbao"
+
+
+#3.11
+INSERT INTO almacenes (CODIGO,LUGAR,CAPACIDAD) VALUES(6,"BARCELONA",3);
+#3.12
+ INSERT INTO cajas (NUMREFERENCIA,CONTENIDO,VALOR,ALMACEN) VALUES("H5RT","Papel",200,2);
+#3.13 
+UPDATE cajas SET valor = valor*0.85;
+
+#3.14 
+UPDATE cajas
+SET valor = valor*0.80 WHERE cajas.valor >(SELECT  AVG(valor) GROUP BY cajas.ALMACEN)
+
+#3.15 
+DELETE  FROM cajas WHERE cajas.VALOR<100;
+#3.16 
+NI IDEA
